@@ -1,21 +1,26 @@
 import Link from "next/link";
+import ProductCard from "./components/ProductCard";
 
 export default function Home() {
   return (
     <main>
       <h1>Hello World</h1>
-      {/* <a href="/users">Users</a> */}
       <Link href="/users">Users</Link>
+      <ProductCard />
     </main>
   );
 }
 
-// In Next.js, routing is based on the file system, meaning the structure of files and folders in the "app" directory determines the accessible routes. To create a route, you add a new folder (e.g., users) in the app directory, and within it, include a file named page (with the extension .js, .jsx, or .tsx for TypeScript). Naming this file as page in lowercase is essential because Next.js relies on naming conventions rather than configuration. Inside this page file, you export a React component, which will render when users visit the corresponding route (e.g., /users). This file-based, convention-driven system simplifies routing by eliminating the need for additional configuration.
+// side (CSR) and server-side (SSR).
 
-// The naming of the component within the page file doesn’t affect routing in Next.js. it’s purely for organizing our code more effectively.
+// Client-Side Rendering (CSR): Components are bundled and sent to the client, where they are rendered in the browser, similar to traditional React applications. This approach requires more resources on the client, as the bundle size grows with the application. It can negatively affect performance and SEO since search engines struggle to index content rendered via JavaScript, and sensitive data may be exposed in the client bundle.
 
-// In Next.js's new app routing system, only files named page (and other special files like layout, error, etc.) within a folder are accessible as routes. If you add other files, such as test.css, in the same folder, they won’t be accessible via a route (e.g., /users/test.css). Attempting to access such a file results in a "not found" page. This differs from the older pages router, where any file added to a folder would be publicly accessible as part of the route structure. This new approach enhances security and keeps route access strictly limited to designated files.
+// Server-Side Rendering (SSR): Components are rendered on the server, so only the essential markup and assets are sent to the client. This minimizes the bundle size, enhances SEO, and keeps sensitive data secure on the server. However, server components lack interactivity—they can't handle browser events, access browser APIs, or manage state, which are features only available to client components.
 
-// To create nested routes in Next.js, you can add folders within existing ones. For example, inside the users folder, you can create a new folder, then add a page.tsx file there. By exporting a React component (e.g., NewUserPage), you create a route accessible at /users/new. This way, Next.js automatically generates a nested route structure based on the folder hierarchy.
+// In practical applications, Next.js allows using a combination of both. Server components are preferred by default for better performance and SEO, while client components are used selectively when interactivity or client-specific functionality is required. This balance provides an optimized and secure application with interactive capabilities where necessary.
 
-// To implement optimal navigation in Next.js, avoid using standard anchor (<a>) tags, as they trigger full page reloads, re-downloading all resources, including fonts, CSS, and JavaScript. This is inefficient, especially when common layout elements like navigation bars remain the same. Instead, use the Next.js <Link> component from next/link, which enables client-side navigation. This way, only the content area is replaced without reloading other resources, resulting in faster, smoother transitions between pages.
+// For example, on a product listing page, we can keep components like the navbar and product list server-rendered. For interactive elements like the "Add to Cart" button, instead of making the entire product card a client component, we can extract just the button into a small client component, minimizing client-side JavaScript while keeping other parts server-rendered.
+
+// In Next.js, all components inside the app folder default to server components, meaning they render on the server. When you load the page, the HTML document is served from the backend, which is beneficial for SEO since search engine bots can see the content directly.
+
+// However, server components cannot handle interactivity (like onClick or onChange events). If you need interactivity, you can convert the specific interactive parts into client components by adding the use client directive at the top of those files. Alternatively, you can split interactive elements, like buttons, into their own client components, keeping the rest as server-rendered. This approach keeps the bundle size minimal by only loading necessary client-side JavaScript.
