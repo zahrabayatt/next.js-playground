@@ -6,8 +6,15 @@ interface User {
 }
 
 const UsersPage = async () => {
-  // In a Next.js server component, we can use the familiar fetch function to retrieve data directly on the server. The fetch function, which is natively available in browsers, allows us to send HTTP requests to a backend, enabling data fetching to happen server-side before sending the response to the client. This helps optimize performance, reduce client-side workload, and improve SEO.
-  const res = await fetch("http://jsonplaceholder.typicode.com/users");
+  // When calling the fetch function in Next.js, we can pass a second argument as an options object. In this object, setting cache to "no-store" disables caching, which is useful when we want to display fresh data that updates frequently.
+  // const res = await fetch("http://jsonplaceholder.typicode.com/users", { cache: "no-store"});
+
+  // Another option is to keep data fresh for a specified period. Instead of cache: "no-store", we can set next to an object and specify parameters specific to Next.js. For instance, setting revalidate to 10 tells Next.js to refresh data every 10 seconds by running a background job to get updated data from the backend. This is how caching and data revalidation work in Next.js.
+  const res = await fetch("http://jsonplaceholder.typicode.com/users", {
+    next: { revalidate: 10 },
+  });
+  // It's important to note that this caching behavior is only implemented in the fetch function in Next.js. If you use a third-party library like Axios, you won't get the automatic data caching provided by Next.js.
+
   const users: User[] = await res.json();
 
   return (
@@ -24,16 +31,8 @@ const UsersPage = async () => {
 
 export default UsersPage;
 
-// In Next.js, data can be fetched on either the client or the server.
+// Fetching data in server components has the added benefit of caching. Caching means storing data in a faster-access location, such as memory, the file system, or the network, with access speed decreasing as you go down this list. For example, retrieving data from the network is slower than from the file system.
 
-// Client-Side Fetching:
+// Next.js includes a built-in data cache. When we use the fetch function to get data, Next.js automatically stores the result in a file system-based cache. On subsequent requests for the same data, Next.js retrieves it from the cache rather than re-fetching it, making data access quicker.
 
-// Typically uses state and effect hooks (or React Query as an alternative) to retrieve data and store it in a state variable.
-// Challenges:
-// - Increased Bundle Size: More components are sent to the client, slowing down page load times.
-// - Higher Resource Usage: Rendering on the client requires more resources.
-// - SEO Limitations: Search engines might not index content loaded on the client.
-// - Security Risks: Sensitive data like API keys can end up on the client side.
-// - Extra Round-Trip: After loading HTML, CSS, and JS, the browser makes an additional request to fetch data.
-
-// Server-side data fetching in Next.js helps address these issues by loading data before sending it to the client.
+// Next.js also gives developers control over caching behavior. If data changes frequently, caching can be disabled or configured so that cached data is treated as fresh for a specified time.
