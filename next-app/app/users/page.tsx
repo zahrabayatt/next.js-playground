@@ -6,20 +6,20 @@ interface User {
 }
 
 const UsersPage = async () => {
-  // When calling the fetch function in Next.js, we can pass a second argument as an options object. In this object, setting cache to "no-store" disables caching, which is useful when we want to display fresh data that updates frequently.
-  // const res = await fetch("http://jsonplaceholder.typicode.com/users", { cache: "no-store"});
-
-  // Another option is to keep data fresh for a specified period. Instead of cache: "no-store", we can set next to an object and specify parameters specific to Next.js. For instance, setting revalidate to 10 tells Next.js to refresh data every 10 seconds by running a background job to get updated data from the backend. This is how caching and data revalidation work in Next.js.
+  // const res = await fetch("http://jsonplaceholder.typicode.com/users", {
+  //   next: { revalidate: 10 },
+  // });
+  // disable caching:
   const res = await fetch("http://jsonplaceholder.typicode.com/users", {
-    next: { revalidate: 10 },
+    cache: "no-cache",
   });
-  // It's important to note that this caching behavior is only implemented in the fetch function in Next.js. If you use a third-party library like Axios, you won't get the automatic data caching provided by Next.js.
-
   const users: User[] = await res.json();
 
   return (
     <>
       <h1>Users</h1>
+      {/* // Timestamp Example: A timestamp showing when the page was rendered is added to the users page. During development, the timestamp updates with each page refresh. */}
+      <p>{new Date().toLocaleTimeString()}</p>
       <ul>
         {users.map((user) => (
           <li key={user.id}>{user.name}</li>
@@ -31,8 +31,32 @@ const UsersPage = async () => {
 
 export default UsersPage;
 
-// Fetching data in server components has the added benefit of caching. Caching means storing data in a faster-access location, such as memory, the file system, or the network, with access speed decreasing as you go down this list. For example, retrieving data from the network is slower than from the file system.
+// In Next.js, there is a performance optimization technique called static rendering (or static site generation). The idea behind static rendering is that for pages or components with static data, Next.js can render them once during the build process for production. This means that when those pages or components are needed again, Next.js won't re-render them; instead, it will retrieve their content from its cache, which is stored on the file system.
 
-// Next.js includes a built-in data cache. When we use the fetch function to get data, Next.js automatically stores the result in a file system-based cache. On subsequent requests for the same data, Next.js retrieves it from the cache rather than re-fetching it, making data access quicker.
+// Static rendering happens at build time, as opposed to dynamic rendering, which occurs at request time.
 
-// Next.js also gives developers control over caching behavior. If data changes frequently, caching can be disabled or configured so that cached data is treated as fresh for a specified time.
+// In Next.js, when static rendering is used, pages are built once at build time and served from the cache during requests. This results in fast, cached pages. Here's a demonstration:
+
+// Timestamp Example: A timestamp showing when the page was rendered is added to the users page. During development, the timestamp updates with each page refresh.
+
+// Development Mode: In development mode, the timestamp changes because Next.js re-renders the page on each refresh, as the page is dynamically generated.
+
+// Production Build: When the app is built using npm run build, Next.js treats the page as static and renders it only once during build time. As a result, the timestamp no longer updates upon refresh.
+
+// Disabling Caching: To prevent Next.js from treating the data as static, caching is disabled by setting cache: "no-store". This forces Next.js to dynamically render the page at request time.
+
+// Static vs Dynamic Rendering:
+
+// Without caching (cache: "no-store"), Next.js will dynamically render the page at runtime, shown by the lambda (λ) icon.
+// With caching enabled, the page is statically rendered and served from the file system cache, indicated by a circle (●).
+// Rebuilding for Production: After disabling caching and rebuilding the application, refreshing the page causes the timestamp to update because Next.js now performs server-side rendering at runtime, not static rendering.
+
+// This example highlights the flexibility of Next.js in deciding between static and dynamic rendering based on caching configuration.
+
+// npm run dev - run application in development
+// npm run build - build application for production
+// npm start - run application in production
+
+// Conclusion:
+// In Next.js, rendering can happen on the client or on the server.
+// If it happens on the server, it can happen at build time, which is called static rendering, or at request time, which is called dynamic rendering.
