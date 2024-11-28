@@ -1,17 +1,3 @@
-/* 
-A CSS module is a CSS file that is scoped to a page or a component. It's a way to prevent styles from clashing or overwriting each other.
-
-If you have been working with CSS for a while, you know that if you have the same class defined in two different places in two different stylesheets, these classes can overwrite each other depending on how we import these stylesheet files. CSS modules aim to solve that problem.
-
-to create some styles for ProductCard component, we add a new file in component directory and we can call this file anything but it's better to call it the same as the component.
-What matters is that the extension has to be .module.css
-
-in this file we can define classes that are scoped to ProductCard component.
-*/
-
-/* 
-use camelCase notation instead of using - like card-container because because we import these styles as JS object in component and this is not a valid name for a javascript property, so we call them like styles.cardContainer
-*/
 .cardContainer {
   padding: 1rem;
   border: 1px solid #ccc;
