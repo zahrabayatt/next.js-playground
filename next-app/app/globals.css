@@ -20,3 +20,18 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   padding: 1rem;
 }
+
+/* 
+this is our global style sheet and we should use it for styles that are truly global in our application.
+Styles that apply to all pages, like anything to do with the body element, our headings, our hyperlinks and so on. Anything that is specific to a page or a component, we should implement it somewhere else.
+So one thing you shouldn't do here is you shouldn't define custom
+classes like user list, because this only applies to a particular
+component or a page.
+With this approach, as we build more and more components, this
+global style sheet grows really large and becomes unmaintainable.
+And more importantly, as we change or delete our components, we'll
+have to remember to come back and do some cleanup here.
+Otherwise, over time, we'll have a lot of dead styles in this file.
+
+So, reserve this file for styles that are truly global, for styles that are specific to a page or a component, use CSS modules or Tailwind.
+*/
