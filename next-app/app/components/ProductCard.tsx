@@ -3,11 +3,13 @@ import AddToCard from "./AddToCard";
 
 const ProductCard = () => {
   return (
-    // tailwind css docs: https://tailwindcss.com/docs/installation
-    <div className="p-5 my-5 bg-sky-400 text-white text-xl hover:bg-sky-600">
+    <div>
       <AddToCard />
     </div>
   );
 };
 
 export default ProductCard;
+
+// Daisy UI is a very popular component library for tailwind.
+// https://daisyui.com/docs/install/

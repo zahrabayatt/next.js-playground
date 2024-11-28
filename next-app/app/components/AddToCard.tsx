@@ -2,7 +2,12 @@
 import React from "react";
 
 const AddToCard = () => {
-  return <button onClick={() => console.log("Adding")}>Add</button>;
+  // button daisyUI: https://daisyui.com/components/button/
+  return (
+    <button className="btn btn-primary" onClick={() => console.log("Adding")}>
+      Add
+    </button>
+  );
 };
 
 export default AddToCard;
