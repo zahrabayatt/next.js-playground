@@ -16,5 +16,11 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  padding: 1rem;
+}
+
+/* overwriting base layer styles in tailwind */
+@layer base {
+  h1 {
+    @apply font-extrabold text-2xl mb-3;
+  }
 }
