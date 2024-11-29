@@ -10,6 +10,3 @@ const ProductCard = () => {
 };
 
 export default ProductCard;
-
-// Daisy UI is a very popular component library for tailwind.
-// https://daisyui.com/docs/install/

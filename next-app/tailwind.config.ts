@@ -16,7 +16,6 @@ export default {
     },
   },
   plugins: [daisyui],
-  // daisyUI theme: https://daisyui.com/docs/themes/
   daisyui: {
     themes: ["winter"],
   },
