@@ -1,6 +1,5 @@
 import React, { ReactNode } from "react";
 
-// layout component should have children of type react node.
 interface Props {
   children: ReactNode;
 }

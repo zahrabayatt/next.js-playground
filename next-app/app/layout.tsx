@@ -35,6 +35,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-// we use layout to create UI that is shared between multiple pages.
-// this is a root layout and we can create nested custom layouts.
