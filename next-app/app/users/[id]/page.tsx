@@ -8,7 +8,6 @@ interface Props {
 const UserDetailPage = async (props: Props) => {
   const { id } = await props.params;
   if (id > 10) {
-    // it redirect it to not-found page
     notFound();
   }
 

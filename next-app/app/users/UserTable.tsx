@@ -13,7 +13,8 @@ interface Props {
 }
 
 const userTable = async ({ sortOrder }: Props) => {
-  const res = await fetch("http://jsonplaceholder.typicode.com/users", {
+  // produce a error by invalid url
+  const res = await fetch("http://jsonplaceholder.typicode.com/xusers", {
     cache: "no-cache",
   });
 
