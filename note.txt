@@ -1,2 +1,10 @@
-install MySQL server(MySQL Installer for Windows): https://dev.mysql.com/downloads/
-install data grip or MySQL Workbench for viewing and managing data
+instal prisma as ORM: npm i prisma
+
+an ORM is like a tool that sits between our application and a database. we use this ORM to send and get data back or use it to create, update, or delete data.
+
+install prisma vs code extension to get completion, syntax highlighting, formatting and so on.
+
+prisma comes with command-line interface that we can work with using npx, so if we type npx prisma, we can see examples of commands that are available to us.
+
+npx prisma init -->  Set up Prisma for your app
+
