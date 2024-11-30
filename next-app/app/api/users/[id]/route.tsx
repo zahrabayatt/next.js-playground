@@ -11,20 +11,10 @@ export function GET(
   return NextResponse.json({ id: 1, name: "Mosh" });
 }
 
-// Put for updating object by replacing it
-// Patch for updating object by updating one or more properties
-
 export async function PUT(
   request: NextRequest,
   { params }: { params: { id: number } }
 ) {
-  // validate the request body
-  // if invalid, return 400
-  // else fetch the user with the given id
-  // if doesn't exist, return 404
-  // else update the user
-  // return the updated user
-
   const body = await request.json();
 
   if (!body.name) {
@@ -36,4 +26,20 @@ export async function PUT(
   }
 
   return NextResponse.json({ id: 1, name: body.name });
+}
+
+export function DELETE(
+  request: NextRequest,
+  { params }: { params: { id: number } }
+) {
+  // fetch user form db
+  // if not found, return 404
+  // delete the user
+  // return 200
+
+  if (params.id > 10) {
+    return NextResponse.json({ error: "User not found" }, { status: 404 });
+  }
+
+  return NextResponse.json({});
 }
