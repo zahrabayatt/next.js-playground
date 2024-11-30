@@ -1,0 +1,2 @@
+install MySQL server(MySQL Installer for Windows): https://dev.mysql.com/downloads/
+install data grip or MySQL Workbench for viewing and managing data
