@@ -22,13 +22,11 @@ export async function POST(request: NextRequest) {
       email: body.email,
     },
   });
-
   if (user) {
     return NextResponse.json("User already exist!", { status: 400 });
   }
 
   const newUser = await prisma.user.create({
-    // for best practice explicitly set the data and not set it directly to body because user might send other filed in body and it caused issues.
     data: {
       name: body.name,
       email: body.email,
