@@ -1,8 +1,1 @@
-As we define or change our models, we have to create migrations.
-These migrations are used to keep our database schema in sync with our Prisma schema. 
-
-if you're using a relational database like mysql or postgres, to create a migration, run this command:
-npx prisma migrate dev 
-
-if you're using a non-sql database like mongo, to create a migration, run this command:
-npx prisma db push 
+to work with our database, first we need to create a Prisma Client. in the prisma folder of project we create a client.ts file.
