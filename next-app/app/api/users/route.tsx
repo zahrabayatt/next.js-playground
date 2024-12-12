@@ -17,5 +17,23 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(validation.error.errors, { status: 400 });
   }
 
-  return NextResponse.json({ id: 1, name: body.name }, { status: 201 });
+  const user = await prisma.user.findUnique({
+    where: {
+      email: body.email,
+    },
+  });
+
+  if (user) {
+    return NextResponse.json("User already exist!", { status: 400 });
+  }
+
+  const newUser = await prisma.user.create({
+    // for best practice explicitly set the data and not set it directly to body because user might send other filed in body and it caused issues.
+    data: {
+      name: body.name,
+      email: body.email,
+    },
+  });
+
+  return NextResponse.json(newUser, { status: 201 });
 }
