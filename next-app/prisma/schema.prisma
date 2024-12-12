@@ -13,22 +13,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// define our models:
-// we use pascal case notation for naming our models.
-// a model can have properites or fields
-
 model User {
-  // filed: name type attributes
-  // Int?  make it optional
-  // each model can have one id filed
-  id        Int     @id @default(autoincrement())
-  email     String  @unique
-  name      String
-  followers Int     @default(0)
-  isActive  Boolean @default(true)
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  name         String
+  followers    Int      @default(0)
+  isActive     Boolean  @default(true)
+  registeredAt DateTime @default(now())
 }
-
-// learn more about prisma models: https://www.prisma.io/docs/orm/prisma-schema/data-model/models
-
-// we can ask prisma to format our code using this command: 
-// npx prisma format

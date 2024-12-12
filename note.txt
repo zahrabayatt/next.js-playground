@@ -1,2 +1,8 @@
-We are going to define our data or application models. these models are entities of our application domain. For example in an e-commerce application, we have entities or models like product, customer, shopping cart, order, and so on.
+As we define or change our models, we have to create migrations.
+These migrations are used to keep our database schema in sync with our Prisma schema. 
 
+if you're using a relational database like mysql or postgres, to create a migration, run this command:
+npx prisma migrate dev 
+
+if you're using a non-sql database like mongo, to create a migration, run this command:
+npx prisma db push 
