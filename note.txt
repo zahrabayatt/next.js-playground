@@ -1,1 +1,0 @@
-to work with our database, first we need to create a Prisma Client. in the prisma folder of project we create a client.ts file.
