@@ -1,0 +1,8 @@
+To store the files that user uploads we have to use a cloud platform.
+
+cloud platforms;
+Amazon S3
+Google cloud
+Microsoft Azure
+Cloudinary - best integration with next.js
+
