@@ -1,8 +1,6 @@
-To store the files that user uploads we have to use a cloud platform.
+cloudinary website: https://cloudinary.com/home
 
-cloud platforms;
-Amazon S3
-Google cloud
-Microsoft Azure
-Cloudinary - best integration with next.js
+this package brings us a bunch of react components that we're going to drop into our project for uploading and viewing files:
+npm i next-cloudinary
 
+next-cloudinary docs: https://next.cloudinary.dev/installation
