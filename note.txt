@@ -4,3 +4,6 @@ this package brings us a bunch of react components that we're going to drop into
 npm i next-cloudinary
 
 next-cloudinary docs: https://next.cloudinary.dev/installation
+
+next-cloudinary upload doc: https://next.cloudinary.dev/clduploadwidget/basic-usage
+
