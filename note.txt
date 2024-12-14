@@ -7,3 +7,4 @@ next-cloudinary docs: https://next.cloudinary.dev/installation
 
 next-cloudinary upload doc: https://next.cloudinary.dev/clduploadwidget/basic-usage
 
+next-cloudinary upload widget customization: https://demo.cloudinary.com/uw/#/

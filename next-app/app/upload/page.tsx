@@ -26,6 +26,14 @@ const UploadPage = () => {
           const info = results.info as CloudinaryResult;
           setPublicId(info.public_id);
         }}
+        options={{
+          sources: ["local"],
+          multiple: false,
+          maxFiles: 5,
+          // styles: {
+
+          // }
+        }}
       >
         {({ open }) => {
           return (
