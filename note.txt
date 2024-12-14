@@ -5,3 +5,10 @@ scoop install openssl
 
 use openssl to gernerate a secret as next auth secret:  
 openssl rand -base64 32
+
+setting up google provider in NextAuth: https://next-auth.js.org/providers/google
+
+What is OAuth?
+OAuth is short for open authentication, and it's a standard authentication protocol that a lot of websites like Google, Facebook, Twitter and so on implement. With OAuth, we can allow our users to log in with their Google or Twitter accounts. So when someone wants to log into our website via Google, our
+application redirects the user to Google, then Google will identify
+or authenticate the user, and finally will send them back to our application. This is the OAuth protocol. So our application is going to be a client of Google's OAuth protocol.
