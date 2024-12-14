@@ -1,10 +1,7 @@
-cloudinary website: https://cloudinary.com/home
+Next-Auth docs: https://next-auth.js.org/getting-started/example
 
-this package brings us a bunch of react components that we're going to drop into our project for uploading and viewing files:
-npm i next-cloudinary
+install openssl using scope in windows: 
+scoop install openssl
 
-next-cloudinary docs: https://next.cloudinary.dev/installation
-
-next-cloudinary upload doc: https://next.cloudinary.dev/clduploadwidget/basic-usage
-
-next-cloudinary upload widget customization: https://demo.cloudinary.com/uw/#/
+use openssl to gernerate a secret as next auth secret:  
+openssl rand -base64 32
