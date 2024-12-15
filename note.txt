@@ -1,14 +1,19 @@
-Next-Auth docs: https://next-auth.js.org/getting-started/example
+Authenticate Session:
 
-install openssl using scope in windows: 
-scoop install openssl
+When a user logs in, NextAuth creates an authentication session for that user. By default, that session is represented as a JSON Web Token.
 
-use openssl to gernerate a secret as next auth secret:  
-openssl rand -base64 32
+Where can I find the session token? 
 
-setting up google provider in NextAuth: https://next-auth.js.org/providers/google
+open up DevTools, go to the application tab, then open cookies, and look at our website. So here we have a cookie by this name, NextAuth Session Token. So cookies, as you probably know,
+are small pieces of information that are exchanged between the
+client and server with each request. So anytime our application sends a request to the server, these cookies or these pieces of
+information are sent to the server. Now, here we have a cookie called session token. the value of session token looks like a long random string, but this is actually a JSON web token.
 
-What is OAuth?
-OAuth is short for open authentication, and it's a standard authentication protocol that a lot of websites like Google, Facebook, Twitter and so on implement. With OAuth, we can allow our users to log in with their Google or Twitter accounts. So when someone wants to log into our website via Google, our
-application redirects the user to Google, then Google will identify
-or authenticate the user, and finally will send them back to our application. This is the OAuth protocol. So our application is going to be a client of Google's OAuth protocol.
+A JSON web token is like an ID card, like a passport or driver license that the client uses to identify itself. 
+behind this long string, we actually have a JSON object. That JSON object is encoded using the base 64 algorithm. That is why we cannot see its content here. But the server uses NextAuth and
+NextAuth knows how to decode this.
+
+
+
+
+
