@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import NavBar from "./NavBar";
+import AuthProvider from "./auth/Provider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,8 +30,22 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NavBar />
-        <main className="p-5">{children}</main>
+        {/* 
+        after adding this session provider we got this error:
+        [ Server ] Error: React Context is unavailable in Server Components 
+        
+        we can not make this layout component, a client component cause we got another error: 
+        You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/
+
+        to fix that we need to create a client component that is wrapper of session provider like Provider component in auth folder*/}
+        {/* <SessionProvider>
+          <NavBar />
+          <main className="p-5">{children}</main>
+        </SessionProvider> */}
+        <AuthProvider>
+          <NavBar />
+          <main className="p-5">{children}</main>
+        </AuthProvider>
       </body>
     </html>
   );

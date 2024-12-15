@@ -13,6 +13,8 @@ A JSON web token is like an ID card, like a passport or driver license that the 
 behind this long string, we actually have a JSON object. That JSON object is encoded using the base 64 algorithm. That is why we cannot see its content here. But the server uses NextAuth and
 NextAuth knows how to decode this.
 
+we can access to the session on the client and the server.
+
 
 
 
