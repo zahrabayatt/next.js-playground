@@ -1,4 +1,4 @@
-"use client"; // because we can not use react context in server compete
+"use client";
 import React, { ReactNode } from "react";
 import { SessionProvider } from "next-auth/react";
 

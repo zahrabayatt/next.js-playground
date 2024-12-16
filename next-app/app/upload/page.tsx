@@ -30,9 +30,6 @@ const UploadPage = () => {
           sources: ["local"],
           multiple: false,
           maxFiles: 5,
-          // styles: {
-
-          // }
         }}
       >
         {({ open }) => {

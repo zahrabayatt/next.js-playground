@@ -1,10 +1,9 @@
-"use client"; // because we use context and hook
+"use client";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import React from "react";
 
 const NavBar = () => {
-  // access to session
   const { status, data: session } = useSession();
 
   return (
@@ -15,14 +14,12 @@ const NavBar = () => {
       {status === "authenticated" && (
         <div>
           {session.user?.name}
-          {/* this link handled by next auth */}
           <Link href="/api/auth/signout" className="ml-3">
             Sign Out
           </Link>
         </div>
       )}
       {status === "unauthenticated" && (
-        // this link handled by next auth
         <Link href="/api/auth/signin">Login</Link>
       )}
     </div>

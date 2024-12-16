@@ -1,5 +1,12 @@
-Protected Routes: to do this we're using a middleware. With middleware we can run code before a request is completed. So we can create a middleware function that gets executed on every request. In that function we can check the user's session and if the user is trying to access a private part of our website without having a session, then we can redirect them to the login page.
+Database Adapter:
 
+So, up to this point, we can log into our application via Google.  
+That's great. But in a real application, we typically need to store our users in a database. These users can have related data like pictures, posts, and so on.  
+This is where we use adapters. If we use an adapter, when someone logs in, NextAuth will automatically store their data in our database.
 
+adapters in NextAuth: https://next-auth.js.org/adapters
+
+Prisma Adapter in NextAuth: https://authjs.dev/getting-started/adapters/prisma 
+**in this doc, remember to install prisma adapter from next-auth instead of auth!!!
 
 

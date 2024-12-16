@@ -4,7 +4,6 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/route";
 
 export default async function Home() {
-  // access session on the server - this is server component
   const session = await getServerSession(authOptions);
 
   return (
