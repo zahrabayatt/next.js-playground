@@ -1,13 +1,5 @@
-Social logins are great but what if we want to allow users to log in with their username and password. Well, we can certainly do that but there is a fair amount of extra work we have to deal with. we have to store password in an encrypted way in our database, we have to implement the functionality for users to register, to change their password, reset their password and so on. in contrast, with social logins or OAuth providers, we don't have to deal with any ot that. We just ask Google or Facebook or Twitter, is this user a valid user or not. we don't have to store their passwords, we don't have to build any functionality for managing their account. But we can also handle these manually with credentials provider.
+React Email is a very powerful library for creating and sending emails using React on TypeScript. what this library does is that it gives us a bunch of components for creating HTML emails. It also gives us a tool for previewing our emails and a function for sending emails.
 
-Credentials Provider:
+react email docs: https://react.email/
 
-The Credentials provider allows you to handle signing in with arbitrary credentials, such as a username and password, domain, two factor authentication or hardware device (e.g. YubiKey U2F / FIDO).
-
-It is intended to support use cases where you have an existing system you need to authenticate users against, and therefore users authenticated in this manner are not persisted in the database.
-
-credentials provider in NextAuth: https://authjs.dev/getting-started/providers/credentials
-
-To allow users to register, first we have to create an API endpoint. This endpoint will be called by a client component that renders a form.
-
-
+getting start with react email - manual setup: https://react.email/docs/getting-started/manual-setup
