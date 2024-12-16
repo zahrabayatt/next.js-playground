@@ -1,12 +1,11 @@
-Database Adapter:
+Social logins are great but what if we want to allow users to log in with their username and password. Well, we can certainly do that but there is a fair amount of extra work we have to deal with. we have to store password in an encrypted way in our database, we have to implement the functionality for users to register, to change their password, reset their password and so on. in contrast, with social logins or OAuth providers, we don't have to deal with any ot that. We just ask Google or Facebook or Twitter, is this user a valid user or not. we don't have to store their passwords, we don't have to build any functionality for managing their account. But we can also handle these manually with credentials provider.
 
-So, up to this point, we can log into our application via Google.  
-That's great. But in a real application, we typically need to store our users in a database. These users can have related data like pictures, posts, and so on.  
-This is where we use adapters. If we use an adapter, when someone logs in, NextAuth will automatically store their data in our database.
+Credentials Provider:
 
-adapters in NextAuth: https://next-auth.js.org/adapters
+The Credentials provider allows you to handle signing in with arbitrary credentials, such as a username and password, domain, two factor authentication or hardware device (e.g. YubiKey U2F / FIDO).
 
-Prisma Adapter in NextAuth: https://authjs.dev/getting-started/adapters/prisma 
-**in this doc, remember to install prisma adapter from next-auth instead of auth!!!
+It is intended to support use cases where you have an existing system you need to authenticate users against, and therefore users authenticated in this manner are not persisted in the database.
+
+credentials provider in NextAuth: https://authjs.dev/getting-started/providers/credentials
 
 
