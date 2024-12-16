@@ -8,4 +8,6 @@ It is intended to support use cases where you have an existing system you need t
 
 credentials provider in NextAuth: https://authjs.dev/getting-started/providers/credentials
 
+To allow users to register, first we have to create an API endpoint. This endpoint will be called by a client component that renders a form.
+
 
