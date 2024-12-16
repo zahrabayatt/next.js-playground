@@ -2,8 +2,10 @@ React Email is a very powerful library for creating and sending emails using Rea
 
 react email docs: https://react.email/
 
-getting start with react email - manual setup: https://react.email/docs/getting-started/manual-setup
+for sending email we need to use a email service provider, react email integrate with various providers: https://react.email/docs/integrations/overview 
 
-To set up the React Email preview tool, run the command `npm run preview-email`. Before running it, ensure that the `.react-email/` folder is added to `.gitignore` to prevent thousands of generated files from being tracked in the Git repository. After running the command, the application will install its dependencies, which may take 10–20 seconds. Once installed, the preview tool will be available at `http://localhost:3030`. This tool displays all email templates from the `emails` folder and allows you to test them directly in the browser.  
+in this app we use resend as email service provider: https://resend.com
 
-The tool also supports sending test emails without needing a mail server. You can input an email address and send the email with a simple click. 
+resend getting start in next.js: https://resend.com/docs/send-with-nextjs
+
+In this demonstration, we will create an API endpoint for sending emails. However, in a real application, it is not advisable to have a dedicated endpoint solely for sending emails. Instead, email sending should be integrated into your business operations. For instance, when a user places an order, a confirmation email should be sent as part of the order submission process.
