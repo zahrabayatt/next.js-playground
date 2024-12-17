@@ -1,11 +1,5 @@
-React Email is a very powerful library for creating and sending emails using React on TypeScript. what this library does is that it gives us a bunch of components for creating HTML emails. It also gives us a tool for previewing our emails and a function for sending emails.
+Optimizing Image: 
+We can optimize our images using the image component in next.js. This component is built on top of the standard image element in HTML, but under the hood it automatically compresses and resizes our images based on the device size, So in the next.js application we should always prefer to use this component as opposed to the standard image element in HTML.
 
-react email docs: https://react.email/
-
-for sending email we need to use a email service provider, react email integrate with various providers: https://react.email/docs/integrations/overview 
-
-in this app we use resend as email service provider: https://resend.com
-
-resend getting start in next.js: https://resend.com/docs/send-with-nextjs
-
-In this demonstration, we will create an API endpoint for sending emails. However, in a real application, it is not advisable to have a dedicated endpoint solely for sending emails. Instead, email sending should be integrated into your business operations. For instance, when a user places an order, a confirmation email should be sent as part of the order submission process.
+To protect your application from malicious users, configuration is required in order to use external images. This ensures that only external images from your account can be served from the Next.js Image Optimization API. These external images can be configured with the remotePatterns property in your next.config.js file.
+docs url: https://nextjs.org/docs/pages/api-reference/components/image#remotepatterns

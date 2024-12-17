@@ -1,4 +1,4 @@
-import React, { CSSProperties } from "react";
+import React from "react";
 import {
   Html,
   Body,
@@ -18,12 +18,9 @@ const WelcomeTemplate = ({ name }: Props) => {
     <Html>
       <Preview>Welcome aboard!</Preview>
       <Tailwind>
-        {/* <Body style={{ background: "black" }}> */}
-        <Body style={body}>
+        <Body className="bg-white">
           <Container>
-            <Text style={heading} className="font-bold">
-              Hello {name}
-            </Text>
+            <Text className="size-3 font-bold">Hello {name}</Text>
             <Link href="https://codewithme.com">www.codewithme.com</Link>
           </Container>
         </Body>
@@ -32,16 +29,4 @@ const WelcomeTemplate = ({ name }: Props) => {
   );
 };
 
-const body: CSSProperties = {
-  background: "#ffd",
-};
-
-const heading: CSSProperties = {
-  fontSize: "32px",
-};
-
 export default WelcomeTemplate;
-
-// There is two ways to style our email:
-// 2- CSS properties like inline style
-// 1- Tailwind css
