@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import NavBar from "./NavBar";
 import AuthProvider from "./auth/Provider";
+import Script from "next/script";
+import GoogleAnalyticsScript from "./GoogleAnalyticsScript";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -27,21 +29,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-theme="winter">
+      {/* for google analytics, the script should be as high as possible */}
+      {/* instead of script tag, we should use Script Component from next.js */}
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-E720JHXSJ2"
+      />
+      {/* next/script components with inline content require an id attribute to be defined to track and optimize the script. docs: https://nextjs.org/docs/messages/inline-script-id */}
+      {/* Script Strategy: https://nextjs.org/docs/app/api-reference/components/script#strategy */}
+      <Script id="google-analytics">
+        {/* we pass script as string to Script component */}
+        {`window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-E720JHXSJ1');`}
+      </Script>
+      {/* As our application grows, and we integrate it with more and more third-party services, this layout gets polluted with so many script components. So in that case, it's better to grab this piece of code for Google Analytics and put it into a separate component. */}
+      <GoogleAnalyticsScript />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* 
-        after adding this session provider we got this error:
-        [ Server ] Error: React Context is unavailable in Server Components 
-        
-        we can not make this layout component, a client component cause we got another error: 
-        You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/
-
-        to fix that we need to create a client component that is wrapper of session provider like Provider component in auth folder*/}
-        {/* <SessionProvider>
-          <NavBar />
-          <main className="p-5">{children}</main>
-        </SessionProvider> */}
         <AuthProvider>
           <NavBar />
           <main className="p-5">{children}</main>

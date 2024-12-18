@@ -1,5 +1,34 @@
-Optimizing Image: 
-We can optimize our images using the image component in next.js. This component is built on top of the standard image element in HTML, but under the hood it automatically compresses and resizes our images based on the device size, So in the next.js application we should always prefer to use this component as opposed to the standard image element in HTML.
+As part of integrating our application with third-party services, we often have to add their script to one or more pages.
 
-To protect your application from malicious users, configuration is required in order to use external images. This ensures that only external images from your account can be served from the Next.js Image Optimization API. These external images can be configured with the remotePatterns property in your next.config.js file.
-docs url: https://nextjs.org/docs/pages/api-reference/components/image#remotepatterns
+For example, here we have the code
+for Google Analytics and we want to integrate it with our application:
+
+<Script async src="https://www.googletagmanager.com/gtag/js?id=G-E720JHXSJ2" />
+<Script>
+{`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-E720JHXSJ1');`}
+</Script>
+
+
+we can put this script in root layout if we want to apply it to all pages or to specific layout if we only want to apply it to specific pages.
+
+As our application grows, and we integrate it with more and more third-party services, this layout gets polluted with so many script components. So in that case, it's better to grab this piece of code for Google Analytics and put it into a separate component.
+
+### Script Strategy Summary
+
+1. **Before Interactive**  
+   - **Timing:** Script loads before Next.js injects client-side code (before hydration).  
+   - **Use Cases:** Critical scripts like bot detectors or cookie consent managers that must load early.  
+
+2. **After Interactive** *(Default)*  
+   - **Timing:** Script loads after the page becomes interactive and client-side code is injected.  
+   - **Use Cases:** Tag managers or analytics scripts that depend on the page being interactive.  
+
+3. **Lazy on Load**  
+   - **Timing:** Script loads after all resources on the page are fetched.  
+   - **Use Cases:** Background or low-priority scripts like chat plugins or social media widgets.  
+
+By choosing the right strategy, you can optimize the script's impact on performance and user experience.
+
