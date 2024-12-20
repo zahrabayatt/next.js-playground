@@ -20,8 +20,6 @@ body {
 
 @layer base {
   h1 {
-    /* we can also specify globally all the h1 use the poppins font */
-    /* @apply font-extrabold text-2xl mb-3 font-poppins; */
     @apply font-extrabold text-2xl mb-3;
   }
 }

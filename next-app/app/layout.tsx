@@ -1,21 +1,9 @@
 import type { Metadata } from "next";
-// load custom fonts:
 import localFont from "next/font/local";
-// load google fonts:
-// import { Inter, Roboto } from "next/font/google"; // in this module, we have tens and hundreds of popular Google fonts like Inter.
 import "./globals.css";
 import NavBar from "./NavBar";
 import AuthProvider from "./auth/Provider";
 import GoogleAnalyticsScript from "./GoogleAnalyticsScript";
-
-// const inter = Inter({
-//   subsets: ["latin"], // we should apply Subsetting and with this we can reduce the font size to only the characters that we need For example, if you're using a Latin language, then we should set subset to Latin
-// });
-
-// const roboto = Roboto({
-//   subsets: ["latin"],
-//   weight: ["400", "500"], // the thickness ot the font
-// });
 
 const geistSans = localFont({
   src: "../public/fonts/GeistVF.woff", // add the font file in public folder
@@ -25,7 +13,7 @@ const geistSans = localFont({
 
 const geistMono = localFont({
   src: "../public/fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono", // It's the name of a CSS variable or custom property that represents our font
+  variable: "--font-geist-mono",
   weight: "100 900",
 });
 
@@ -47,16 +35,9 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="winter">
       <GoogleAnalyticsScript />
-      {/* use font as variables and apply in using tailwind css class where we want to like in home page
-      to get intellisense extend the tailwind font in tailwind.config.ts */}
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased`}
       >
-        {/* apply fonts as font family to body */}
-        {/* <body className={geistSans.className}> */}
-        {/* <body className={geistMono.className}> */}
-        {/* <body className={poppins.className}> */}
-        {/* <body className={inter.className}> */}
         <AuthProvider>
           <NavBar />
           <main className="p-5">{children}</main>
