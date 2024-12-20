@@ -1,3 +1,2 @@
-Lazy loading is a strategy for loading client components or third-party libraries in the future when we need them, typically as a result of a user interaction, like when the user clicks on a button or scrolls beyond a certain point.
-
-we should only use technic for small components, we should only use it for heavy components
+Before we deploy our application, we should first build it locally to ensure there are no errors, because any build errors will show up during deployment:
+npm run build
